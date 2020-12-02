@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BibliotecaA;
+package BibliotecaC;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
 
 /**
  *
  * @author Yosma
  */
-public interface BibliotecaA extends Remote{
+public interface BibliotecaC extends Remote{
     
-     public String helloToA(String name) throws RemoteException;
+     public String helloToC(String name) throws RemoteException;
     
 }

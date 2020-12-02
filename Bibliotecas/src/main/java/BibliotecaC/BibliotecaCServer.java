@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BibliotecaA;
+package BibliotecaC;
+
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -12,13 +13,13 @@ import java.rmi.server.*;
  *
  * @author Yosma
  */
-public class BibliotecaAServer {
+public class BibliotecaCServer {
 
     public static void main(String[] args){
 
         try {
-            Registry registry = LocateRegistry.createRegistry(5099);
-            registry.rebind("BibliotecaA", new BibliotecaAImpl());    //ruta donde sube objeto        
+            Registry registry = LocateRegistry.createRegistry(5097);
+            registry.rebind("BibliotecaC", new BibliotecaCImpl());    //ruta donde sube objeto        
 
         } catch (Exception e) {
 

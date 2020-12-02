@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BibliotecaA;
-import BibliotecaC.BibliotecaC;
+package BibliotecaC;
+import BibliotecaA.BibliotecaA;
 import BibliotecaB.BibliotecaB;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -14,7 +14,7 @@ import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
 
-public class BibliotecaAClient {
+public class BibliotecaCClient {
 
     private static BibliotecaB look_upB;
     private static BibliotecaA look_upA;
@@ -35,20 +35,20 @@ public class BibliotecaAClient {
         String response = look_upB.helloToB(txt);
         JOptionPane.showMessageDialog(null, response);
         } else 
-            if (c.equals(bi)) {
+            if (a.equals(bi)) {
+                look_upA = (BibliotecaA) Naming.lookup("rmi://localhost:5099/BibliotecaA"); //ruta donde busca objeto
+                String txt = JOptionPane.showInputDialog("What is your name?");
+            
+                String response = look_upA.helloToA(txt); //Esto no deberia ser
+                JOptionPane.showMessageDialog(null, response);
+        } else {
+            
                 look_upC = (BibliotecaC) Naming.lookup("rmi://localhost:5097/BibliotecaC"); //ruta donde busca objeto
                 String txt = JOptionPane.showInputDialog("What is your name?");
             
                 String response = look_upC.helloToC(txt); //Esto no deberia ser
                 JOptionPane.showMessageDialog(null, response);
-        } else {
-            
-            look_upA = (BibliotecaA) Naming.lookup("rmi://localhost:5099/BibliotecaA"); //ruta donde busca objeto
-            String txt = JOptionPane.showInputDialog("What is your name?");
-            
-            String response = look_upA.helloToA(txt); //Esto no deberia ser
-            JOptionPane.showMessageDialog(null, response);
-            
+                
             }
         
     }

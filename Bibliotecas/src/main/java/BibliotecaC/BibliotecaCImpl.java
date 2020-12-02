@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BibliotecaA;
-
+package BibliotecaC;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -12,17 +11,17 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author Yosma
  */
-public class BibliotecaAImpl extends UnicastRemoteObject implements BibliotecaA{
+public class BibliotecaCImpl extends UnicastRemoteObject implements BibliotecaC{
     
-        public BibliotecaAImpl() throws RemoteException { //constructor que llama a constructor de su padre
+        public BibliotecaCImpl() throws RemoteException { //constructor que llama a constructor de su padre
         super(); //Esto llama al constructor de UnicastRemoteObject
     }
 
-     @Override
-    public String helloToA(String name) throws RemoteException{
+    @Override
+    public String helloToC(String name) throws RemoteException{
 
         System.err.println(name + " is trying to contact!");
-        return "Server A says hello to " + name;
+        return "Server C says hello to " + name;
 
     }
     
