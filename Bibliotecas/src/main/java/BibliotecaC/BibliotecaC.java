@@ -15,4 +15,7 @@ public interface BibliotecaC extends Remote{
     
      public String helloToC(String name) throws RemoteException;
     
+     public String EncontrarVol(String name) throws RemoteException;
+     
+     public String EncontrarAutor(String name) throws RemoteException;
 }

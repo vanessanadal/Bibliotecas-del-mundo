@@ -15,4 +15,7 @@ public interface BibliotecaB extends Remote{
     
      public String helloToB(String name) throws RemoteException;
     
+     public String BuscarTitulo(String name) throws RemoteException;
+     
+     public String BuscarAutor(String name) throws RemoteException;
 }

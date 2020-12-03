@@ -49,8 +49,18 @@ public class BibliotecaCClient {
                 String response = look_upC.helloToC(txt); //Esto no deberia ser
                 JOptionPane.showMessageDialog(null, response);
                 
+                String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+            
+            if("titulo".equals(opcion)) {
+                 String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                 String libro = look_upC.EncontrarVol(titulo); //Esto no deberia ser
+                 JOptionPane.showMessageDialog(null, libro);
+                } else { 
+                 String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                 String libro = look_upC.EncontrarAutor(autor); //Esto no deberia ser
+                 JOptionPane.showMessageDialog(null, libro); } 
+            
             }
-        
+        }
     }
 
-}

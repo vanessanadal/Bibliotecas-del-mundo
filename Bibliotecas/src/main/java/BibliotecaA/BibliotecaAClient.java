@@ -22,11 +22,15 @@ public class BibliotecaAClient {
 
     public static void main(String[] args) 
         throws MalformedURLException, RemoteException, NotBoundException {
-        String bi = JOptionPane.showInputDialog("En cual biblioteca desea buscar?");
-        String x = String.valueOf(bi);
+        
         String a = "A";
         String b = "B";
         String c = "C";
+        boolean salida = true;
+        
+        while(salida) {
+        
+        String bi = JOptionPane.showInputDialog("En cual biblioteca desea buscar?");
         
         if(b.equals(bi)){
         look_upB = (BibliotecaB) Naming.lookup("rmi://localhost:5098/BibliotecaB"); //ruta donde busca objeto
@@ -49,8 +53,25 @@ public class BibliotecaAClient {
             String response = look_upA.helloToA(txt); //Esto no deberia ser
             JOptionPane.showMessageDialog(null, response);
             
+            String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+            
+                if("titulo".equals(opcion)) {
+                 String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                 String libro = look_upA.PedirLibro(titulo); //Esto no deberia ser
+                 JOptionPane.showMessageDialog(null, libro);
+                } else { 
+                 String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                 String libro = look_upA.PedirAutor(autor); //Esto no deberia ser
+                 JOptionPane.showMessageDialog(null, libro); } 
             }
+          
+            String res = JOptionPane.showInputDialog("Desea salir? s/n");
+            if("n".equals(res)) {
+            salida=true;
+            } else { salida=false; } 
         
+        } 
+ 
     }
 
 }

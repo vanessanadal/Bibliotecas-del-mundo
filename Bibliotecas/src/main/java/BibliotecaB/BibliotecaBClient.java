@@ -48,6 +48,17 @@ public class BibliotecaBClient {
             String response = look_upB.helloToB(txt);
             JOptionPane.showMessageDialog(null, response);
             
+            String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+            
+            if("titulo".equals(opcion)) {
+                 String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                 String libro = look_upB.BuscarTitulo(titulo); //Esto no deberia ser
+                 JOptionPane.showMessageDialog(null, libro);
+                } else { 
+                 String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                 String libro = look_upB.BuscarAutor(autor); //Esto no deberia ser
+                 JOptionPane.showMessageDialog(null, libro); } 
+            
             }
         
     }

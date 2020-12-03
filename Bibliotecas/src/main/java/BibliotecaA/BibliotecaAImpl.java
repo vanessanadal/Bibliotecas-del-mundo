@@ -25,5 +25,17 @@ public class BibliotecaAImpl extends UnicastRemoteObject implements BibliotecaA{
         return "Server A says hello to " + name;
 
     }
+
+    @Override
+    public String PedirLibro(String name) throws RemoteException {
+        //Aqui buscara en XML libro con el titulo "name" pasado por parametro
+        return "El libro es: " +  name + " por J.K Rowling";
+    }
+
+    @Override
+    public String PedirAutor(String name) throws RemoteException {
+        //Aqui buscara en XML los libros del autor "name" pasado por parametro
+        return "Los libros del autor " + name + "encontrados son: " +  "Matematica III, Calculo Avanzado II y Fundamentos del calculo diferencial";
+    }
     
 }

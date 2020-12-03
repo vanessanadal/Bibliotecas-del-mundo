@@ -15,5 +15,9 @@ import java.rmi.RemoteException;
 public interface BibliotecaA extends Remote{
     
      public String helloToA(String name) throws RemoteException;
+     
+     public String PedirLibro(String name) throws RemoteException;
+     
+     public String PedirAutor(String name) throws RemoteException;
     
 }
