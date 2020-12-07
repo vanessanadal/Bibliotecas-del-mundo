@@ -17,50 +17,67 @@ import javax.swing.JOptionPane;
 public class BibliotecaBClient {
 
     private static BibliotecaB look_upB;
-    private static BibliotecaA look_upA;
-    private static BibliotecaC look_upC;
     
     public static void main(String[] args) 
         throws MalformedURLException, RemoteException, NotBoundException {
-        String bi = JOptionPane.showInputDialog("En cual biblioteca desea buscar?");
-        String x = String.valueOf(bi);
         String a = "A";
-        String b = "B";
         String c = "C";
+        boolean salida = true;
+
+        while(salida){
+               
+        String bi = JOptionPane.showInputDialog("En cual biblioteca desea buscar?");
         
         if(c.equals(bi)){
-        look_upC = (BibliotecaC) Naming.lookup("rmi://localhost:5097/BibliotecaC"); //ruta donde busca objeto
-        String txt = JOptionPane.showInputDialog("What is your name?");
-            
-        String response = look_upC.helloToC(txt);
-        JOptionPane.showMessageDialog(null, response);
+        String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+
+            MiddlewareClientB mB = new MiddlewareClientB();
+
+            if("titulo".equals(opcion)) {
+                String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                String libro = mB.BuscarTitulo(titulo, "C");
+                JOptionPane.showMessageDialog(null, libro);
+              } else { 
+                String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                String libro = mB.BuscarAutor(autor, "C");
+                JOptionPane.showMessageDialog(null, libro); } 
         } else 
             if (a.equals(bi)) {
-                look_upA = (BibliotecaA) Naming.lookup("rmi://localhost:5099/BibliotecaA"); //ruta donde busca objeto
-                String txt = JOptionPane.showInputDialog("What is your name?");
-            
-                String response = look_upA.helloToA(txt); //Esto no deberia ser
-                JOptionPane.showMessageDialog(null, response);
+                String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+        
+                MiddlewareClientB mB = new MiddlewareClientB();
+
+                if("titulo".equals(opcion)) {
+                         String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                         String libro = mB.BuscarTitulo(titulo, "A");
+                         JOptionPane.showMessageDialog(null, libro);
+                } else { 
+                         String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                         String libro = mB.BuscarAutor(autor, "A");
+                         JOptionPane.showMessageDialog(null, libro); } 
+                
         } else {
             look_upB = (BibliotecaB) Naming.lookup("rmi://localhost:5098/BibliotecaB"); //ruta donde busca objeto
-            String txt = JOptionPane.showInputDialog("What is your name?");
-            
-            String response = look_upB.helloToB(txt);
-            JOptionPane.showMessageDialog(null, response);
             
             String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
             
             if("titulo".equals(opcion)) {
                  String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
-                 String libro = look_upB.BuscarTitulo(titulo); //Esto no deberia ser
+                 String libro = look_upB.BuscarTitulo(titulo); 
                  JOptionPane.showMessageDialog(null, libro);
                 } else { 
                  String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
-                 String libro = look_upB.BuscarAutor(autor); //Esto no deberia ser
+                 String libro = look_upB.BuscarAutor(autor); 
                  JOptionPane.showMessageDialog(null, libro); } 
             
             }
         
+        String res = JOptionPane.showInputDialog("Desea salir? s/n");
+        if("n".equals(res)) {
+        salida=true;
+        } else { salida=false; } 
+        
+        } 
     }
 
 }

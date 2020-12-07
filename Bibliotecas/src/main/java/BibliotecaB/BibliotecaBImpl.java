@@ -28,12 +28,12 @@ public class BibliotecaBImpl extends UnicastRemoteObject implements BibliotecaB{
     @Override
     public String BuscarTitulo(String name) throws RemoteException {
         //Aqui buscara en XML libro con el titulo "name" pasado por parametro
-        return "El libro es: " +  name + " por J.K Rowling";
+        return "(B) El libro es: " +  name + " por J.K Rowling";
     }
 
     @Override
     public String BuscarAutor(String name) throws RemoteException {
         //Aqui buscara en XML los libros del autor "name" pasado por parametro
-        return "Los libros del autor " + name + "encontrados son: " +  "Matematica III, Calculo Avanzado II y Fundamentos del calculo diferencial";
+        return "(B) Los libros del autor " + name + "encontrados son: " +  "Matematica III, Calculo Avanzado II y Fundamentos del calculo diferencial";
     }
 }
