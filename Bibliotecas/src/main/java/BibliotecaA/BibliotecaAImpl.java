@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package BibliotecaA;
-
+import XML.*;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -27,15 +30,17 @@ public class BibliotecaAImpl extends UnicastRemoteObject implements BibliotecaA{
     }
 
     @Override
-    public String PedirLibro(String name) throws RemoteException {
+    public String PedirLibro(String name) throws RemoteException, ParserConfigurationException, SAXException, IOException {
         //Aqui buscara en XML libro con el titulo "name" pasado por parametro
-        return "(A) El libro es: " +  name + " por J.K Rowling";
+        Buscador b = new Buscador();
+        return "(A)" + b.RecorreXMLporTitulo(name, "A");
     }
 
     @Override
-    public String PedirAutor(String name) throws RemoteException {
+    public String PedirAutor(String name) throws RemoteException, ParserConfigurationException, SAXException, IOException  {
         //Aqui buscara en XML los libros del autor "name" pasado por parametro
-        return "(A) Los libros del autor " + name + "encontrados son: " +  "Matematica III, Calculo Avanzado II y Fundamentos del calculo diferencial";
+        Buscador b = new Buscador();
+        return "(A)" + b.RecorreXMLporAutor(name, "A");
     }
     
 }
