@@ -9,10 +9,13 @@ import BibliotecaA.BibliotecaA;
 import BibliotecaA.MiddlewareServidorA;
 import BibliotecaB.BibliotecaB;
 import BibliotecaB.MiddlewareServidorB;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -23,7 +26,7 @@ public class MiddlewareClientC {
     public MiddlewareClientC() {
     }
     
-    public String EncontrarVol(String nombre, String destino)throws MalformedURLException, RemoteException, NotBoundException {
+    public String EncontrarVol(String nombre, String destino)throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException {
         if("B".equals(destino)) {
         BibliotecaB look_upB = (BibliotecaB) Naming.lookup("rmi://localhost:5098/BibliotecaB"); //ruta donde busca objeto
         MiddlewareServidorB mB = new MiddlewareServidorB();
@@ -35,7 +38,7 @@ public class MiddlewareClientC {
         }
     }
     
-    public String EncontrarAutor(String nombre, String destino)throws MalformedURLException, RemoteException, NotBoundException{
+    public String EncontrarAutor(String nombre, String destino)throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException{
         if("B".equals(destino)) {
         BibliotecaB look_upB = (BibliotecaB) Naming.lookup("rmi://localhost:5098/BibliotecaB"); //ruta donde busca objeto
         MiddlewareServidorB mB = new MiddlewareServidorB();

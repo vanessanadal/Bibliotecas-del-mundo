@@ -6,7 +6,11 @@
 package BibliotecaB;
 
 import BibliotecaA.BibliotecaA;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.rmi.RemoteException;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -17,11 +21,11 @@ public class MiddlewareServidorB {
     public MiddlewareServidorB() {
     }
     
-    public String getAuthor(BibliotecaB look_upB, String nombre)throws RemoteException{
+    public String getAuthor(BibliotecaB look_upB, String nombre)throws RemoteException, ParserConfigurationException, SAXException, IOException{
         return look_upB.BuscarAutor(nombre);
     }
     
-    public String getTitle(BibliotecaB look_upB, String nombre)throws RemoteException{
+    public String getTitle(BibliotecaB look_upB, String nombre)throws RemoteException, ParserConfigurationException, SAXException, IOException{
         return look_upB.BuscarTitulo(nombre);
     }
     
