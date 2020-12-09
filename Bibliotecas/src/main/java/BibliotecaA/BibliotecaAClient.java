@@ -41,42 +41,44 @@ public class BibliotecaAClient {
         String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
         
         MiddlewareClientA mA = new MiddlewareClientA(); //Se instacia objeto de clase Middleware para traducir peticiones a 
-        
-        if("titulo".equals(opcion)) {
-                 String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
-                 
-                 //Imprimiendo traza y escribiendo logs en txt
-                 String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-                 System.out.println(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Libro " + titulo);
-                 logs.write(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Libro " + titulo);
-                 
-                 //Cliente A llama a medoto PedirLibro de su Middleware para que este lo traduzca a Z39
-                 String libro = mA.PedirLibro(titulo, "B");
-                 JOptionPane.showMessageDialog(null, libro); 
-                 
-                  //Imprimiendo traza y escribiendo logs en txt
-                 String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-                 System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-                 logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-                 
-                 
-        } else { 
-                 String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
-                 
-                 //Imprimiendo traza y escribiendo logs en txt
-                 String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-                 System.out.println(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Autor " + autor);
-                 logs.write(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Autor " + autor);
-                 
-                 String libro = mA.PedirAutor(autor, "B");
-                 JOptionPane.showMessageDialog(null, libro); 
-        
-                 //Imprimiendo traza y escribiendo logs en txt
-                 String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-                 System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-                 logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-        
-        } 
+
+            //SI CLIENTE PIDE POR TITULO A BIBLIOTECA B
+            if("titulo".equals(opcion)) {
+                     String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+
+                     //Imprimiendo traza y escribiendo logs en txt
+                     String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+                     System.out.println(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Libro " + titulo);
+                     logs.write("\n" + marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Libro " + titulo+ " | ");
+
+                     //Cliente A llama a medoto PedirLibro de su Middleware para que este lo traduzca a Z39
+                     String libro = mA.PedirLibro(titulo, "B", logs);
+                     JOptionPane.showMessageDialog(null, libro); 
+
+                      //Imprimiendo traza y escribiendo logs en txt
+                     String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+                     System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
+                     logs.write("\n" +marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro+ " | ");
+
+              //SI CLIENTE PIDE POR AUTOR A BIBLIOTECA B       
+            } else { 
+                     String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+
+                     //Imprimiendo traza y escribiendo logs en txt
+                     String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+                     System.out.println(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Autor " + autor);
+                     logs.write(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Autor " + autor+ " | ");
+
+                     //Cliente A llama a medoto PedirAutor de su Middleware para que este lo traduzca a Z39
+                     String libro = mA.PedirAutor(autor, "B", logs);
+                     JOptionPane.showMessageDialog(null, libro); 
+
+                     //Imprimiendo traza y escribiendo logs en txt
+                     String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+                     System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
+                     logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro+ " | ");
+
+            } 
                 
         } else 
             //PETICIONES A BIBLIOTECA C
@@ -84,40 +86,58 @@ public class BibliotecaAClient {
                 String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
 
                 MiddlewareClientA mA = new MiddlewareClientA();
-
+                
+                //SI CLIENTE PIDE POR TITULO A BIBLIOTECA C
                 if("titulo".equals(opcion)) {
                          String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
                          
                          //Imprimiendo traza y escribiendo logs en txt
                             String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
                             System.out.println(marca + " -- Peticion de Cliente A hacia Servidor C: Pedir Libro " + titulo);
-                            logs.write(marca + " -- Peticion de Cliente A hacia Servidor C: Pedir Libro " + titulo);
+                            logs.write(marca + " -- Peticion de Cliente A hacia Servidor C: Pedir Libro " + titulo+ " | ");
                          
-                         String libro = mA.PedirLibro(titulo, "C");
+                         String libro = mA.PedirLibro(titulo, "C", logs);
                          JOptionPane.showMessageDialog(null, libro);
                          
                          //Imprimiendo traza y escribiendo logs en txt
                             String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
                             System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-                            logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-        
+                            logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro+ " | ");
+                 
+                  //SI CLIENTE PIDE POR AUTOR A BIBLIOTECA C
                 } else { 
                          String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
-                         String libro = mA.PedirAutor(autor, "C");
-                         JOptionPane.showMessageDialog(null, libro); } 
+                         
+                         //Imprimiendo traza y escribiendo logs en txt
+                        String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+                        System.out.println(marca + " -- Peticion de Cliente A hacia Servidor C: Pedir Autor " + autor);
+                        logs.write(marca + " -- Peticion de Cliente A hacia Servidor C: Pedir Autor " + autor+ " | ");
+                         
+                         //Cliente A llama a medoto PedirAutor de su Middleware para que este lo traduzca a Z39
+                         String libro = mA.PedirAutor(autor, "C", logs);
+                         JOptionPane.showMessageDialog(null, libro); 
+                
+                        //Imprimiendo traza y escribiendo logs en txt
+                         String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+                         System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
+                         logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro+ " | ");
+                } 
+                
+                
         } else {
             //PETICIONES LOCALES A BIBLIOTECA A
             look_upA = (BibliotecaA) Naming.lookup("rmi://localhost:5099/BibliotecaA"); //ruta donde busca objeto
             
             String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
-            
+                
+            //SI CLIENTE PIDE POR TITULO LOCALMENTE
                 if("titulo".equals(opcion)) {
                  String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
                  
                  //Imprimiendo traza y escribiendo logs en txt
                  String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-                 System.out.println(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Libro " + titulo);
-                 logs.write(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Libro " + titulo);
+                 System.out.println(marca + " -- Peticion local de Cliente A hacia su Servidor: Pedir Libro " + titulo);
+                 logs.write(marca + " -- Peticion local de Cliente A hacia su Servidor: Pedir Libro " + titulo+ " | ");
                  
                  //LLAMA LOCALMENTE AL SERVIDOR DE LA BIBLIOTECA A
                  String libro = look_upA.PedirLibro(titulo); 
@@ -126,15 +146,16 @@ public class BibliotecaAClient {
                  //Imprimiendo traza y escribiendo logs en txt
                  String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
                  System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-                 logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
+                 logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro+ " | ");
                  
+            //SI CLIENTE PIDE POR AUTOR LOCALMENTE
                 } else { 
                  String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
                  
                  //Imprimiendo traza y escribiendo logs en txt
                  String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-                 System.out.println(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Autor " + autor);
-                 logs.write(marca + " -- Peticion de Cliente A hacia Servidor B: Pedir Autor " + autor);
+                 System.out.println(marca + " -- Peticion local de Cliente A hacia su Servidor: Pedir Autor " + autor);
+                 logs.write(marca + " -- Peticion local de Cliente A hacia su Servidor: Pedir Autor " + autor+ " | ");
                  
                   //LLAMA LOCALMENTE AL SERVIDOR DE LA BIBLIOTECA A
                  String libro = look_upA.PedirAutor(autor); 
@@ -143,7 +164,7 @@ public class BibliotecaAClient {
                  //Imprimiendo traza y escribiendo logs en txt
                  String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
                  System.out.println(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
-                 logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro);
+                 logs.write(marcaFin + " -- Peticion recibida correctamente -- Respuesta:  " + libro+ " | ");
                 } 
             }
           
