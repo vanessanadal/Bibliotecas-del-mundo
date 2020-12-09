@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 package BibliotecaC;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.swing.JOptionPane;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 
 public class BibliotecaCClient {
@@ -17,7 +20,7 @@ public class BibliotecaCClient {
     private static BibliotecaC look_upC;
 
     public static void main(String[] args) 
-        throws MalformedURLException, RemoteException, NotBoundException {
+        throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException {
         String a = "A";
         String b = "B";
         boolean salida = true;

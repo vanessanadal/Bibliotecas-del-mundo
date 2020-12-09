@@ -6,12 +6,15 @@
 package BibliotecaB;
 import BibliotecaA.BibliotecaA;
 import BibliotecaC.BibliotecaC;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.swing.JOptionPane;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 
 public class BibliotecaBClient {
@@ -19,7 +22,7 @@ public class BibliotecaBClient {
     private static BibliotecaB look_upB;
     
     public static void main(String[] args) 
-        throws MalformedURLException, RemoteException, NotBoundException {
+        throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException {
         String a = "A";
         String c = "C";
         boolean salida = true;
