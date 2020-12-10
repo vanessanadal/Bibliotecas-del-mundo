@@ -15,6 +15,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -37,8 +39,7 @@ public class Buscador {
              archivo = new File("BibliotecaCXML.xml");
           }
           
-           
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+           DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(archivo);
            
@@ -53,7 +54,14 @@ public class Buscador {
                 for(int z=0; z<listaCaracteristicas.getLength(); z++){
                     caracteristica = listaCaracteristicas.item(z);
                 if(caracteristica.getNodeName().equals("TITULO") && caracteristica.getTextContent().equals(titulo)){
-                    return "Libro: " + titulo;
+                    for (int s=0; s<listaCaracteristicas.getLength(); s++){
+                    caracteristica = listaCaracteristicas.item(s);
+                    if(caracteristica.getNodeName().equals("AUTOR")){
+                    JOptionPane.showMessageDialog(null, "Se encontro el libro " + titulo + " Autor: " + caracteristica.getTextContent());
+                    return "Libro: " + titulo + caracteristica.getTextContent();
+                    }
+                    }
+                   
                 }
                 }
             }
@@ -71,7 +79,7 @@ public class Buscador {
           } else {
              archivo = new File("BibliotecaCXML.xml");
           }
-           
+           List<String> listaLibroAutor = new ArrayList<String>();
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(archivo);
@@ -87,13 +95,26 @@ public class Buscador {
                 for(int z=0; z<listaCaracteristicas.getLength(); z++){
                     caracteristica = listaCaracteristicas.item(z);
                 if(caracteristica.getNodeName().equals("AUTOR") && caracteristica.getTextContent().equals(autor)){
-                    JOptionPane.showMessageDialog(null, "Se encontro el autor " + autor);
-                    return "Autor: " + autor;
+                    for(int x=0; x < listaCaracteristicas.getLength();x++){
+                        caracteristica = listaCaracteristicas.item(x);
+                        if(caracteristica.getNodeName().equals("TITULO")){
+                            listaLibroAutor.add(caracteristica.getTextContent());
+                        }
+                    }
+                   /* JOptionPane.showMessageDialog(null, "Se encontro el autor " + autor);
+                    return "Autor: " + autor;*/
                 }
                 }
             }
-            return "No se encontro el Autor";
-           
+            if (listaLibroAutor.isEmpty()){
+              return "No se encontro el Autor";  
+            }
+             String libros = "";  
+            for(int i = 0; i < listaLibroAutor.size(); i++){
+                libros = libros + " Libro: " + listaLibroAutor.get(i);
+            }
+             
+            return autor + libros;
     }
     
 }
