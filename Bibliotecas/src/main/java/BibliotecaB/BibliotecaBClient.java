@@ -152,8 +152,8 @@ public class BibliotecaBClient {
                  
                  //Imprimiendo traza y escribiendo logs en txt
                  String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-                 System.out.println(marca + " -- Peticion local de Cliente A hacia su Servidor: Pedir Autor " + autor);
-                 logs.write(marca + " -- Peticion local de Cliente A hacia su Servidor: Pedir Autor " + autor+ " | ");
+                 System.out.println(marca + " -- Peticion local de Cliente B hacia su Servidor: Pedir Autor " + autor);
+                 logs.write(marca + " -- Peticion local de Cliente B hacia su Servidor: Pedir Autor " + autor+ " | ");
                  
                   //LLAMA LOCALMENTE AL SERVIDOR DE LA BIBLIOTECA B
                  String libro = look_upB.BuscarAutor(autor); 

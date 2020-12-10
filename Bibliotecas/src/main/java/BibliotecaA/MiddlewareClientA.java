@@ -51,7 +51,7 @@ public class MiddlewareClientA {
             System.out.println(marca + " -- Middleware Cliente A traduciendo peticion a Z39");
             marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
             logs.write(marca + " -- Peticion traducida. LLamando a Middleware de Servidor C: GetTitle " + nombre+ " | ");
-            System.out.println(marca + " -- Peticion traducida. LLamando a Middleware de Servidor B: GetTitle " + nombre);
+            System.out.println(marca + " -- Peticion traducida. LLamando a Middleware de Servidor C: GetTitle " + nombre);
             
             //LLAMADA A MIDDLEWARE SERVIDOR C EN Z39
             return mC.getTitle(look_upC, nombre, "A",logs); 
