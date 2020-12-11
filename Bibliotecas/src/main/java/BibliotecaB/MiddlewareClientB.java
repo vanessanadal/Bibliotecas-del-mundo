@@ -30,7 +30,7 @@ public class MiddlewareClientB {
     
     public String BuscarTitulo(String nombre, String destino, FileWriter logs)throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException {
         if("A".equals(destino)) {
-        BibliotecaA look_upA = (BibliotecaA) Naming.lookup("rmi://localhost:5099/BibliotecaA"); //ruta donde busca objeto
+        BibliotecaA look_upA = (BibliotecaA) Naming.lookup("rmi://10.2.126.70:5099/BibliotecaA"); //ruta donde busca objeto
         MiddlewareServidorA mA = new MiddlewareServidorA();
         
         //Imprimiendo traza y escribiendo logs en txt
@@ -45,7 +45,7 @@ public class MiddlewareClientB {
         return mA.getTitle(look_upA, nombre, "B",logs); }
         
         else {
-        BibliotecaC look_upC = (BibliotecaC) Naming.lookup("rmi://localhost:5097/BibliotecaC"); //ruta donde busca objeto
+        BibliotecaC look_upC = (BibliotecaC) Naming.lookup("rmi://10.2.127.252:5097/BibliotecaC"); //ruta donde busca objeto
         MiddlewareServidorC mC = new MiddlewareServidorC();
         
         //Imprimiendo traza y escribiendo logs en txt
@@ -63,7 +63,7 @@ public class MiddlewareClientB {
     
     public String BuscarAutor(String nombre, String destino, FileWriter logs)throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException{
         if("A".equals(destino)) {
-        BibliotecaA look_upA = (BibliotecaA) Naming.lookup("rmi://localhost:5099/BibliotecaA"); //ruta donde busca objeto
+        BibliotecaA look_upA = (BibliotecaA) Naming.lookup("rmi://10.2.126.70:5099/BibliotecaA"); //ruta donde busca objeto
         MiddlewareServidorA mA = new MiddlewareServidorA();
         
         //Imprimiendo traza y escribiendo logs en txt
@@ -78,7 +78,7 @@ public class MiddlewareClientB {
         return mA.getAuthor(look_upA, nombre, "B",logs); }
         
         else {
-        BibliotecaC look_upC = (BibliotecaC) Naming.lookup("rmi://localhost:5097/BibliotecaC"); //ruta donde busca objeto
+        BibliotecaC look_upC = (BibliotecaC) Naming.lookup("rmi://10.2.127.252:5097/BibliotecaC"); //ruta donde busca objeto
         MiddlewareServidorC mC = new MiddlewareServidorC();
         
         //Imprimiendo traza y escribiendo logs en txt

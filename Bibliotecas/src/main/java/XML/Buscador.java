@@ -58,12 +58,20 @@ public class Buscador {
                     caracteristica = listaCaracteristicas.item(s);
                     if(caracteristica.getNodeName().equals("AUTOR")){
                     //JOptionPane.showMessageDialog(null, "Se encontro el libro " + titulo + " Autor: " + caracteristica.getTextContent());
-                    return "Libro: " + titulo + caracteristica.getTextContent();
+                    
+                    if("A".equals(biblioteca)) {
+                    return " Libro: " + titulo + caracteristica.getTextContent();
+                    } else if ("B".equals(biblioteca)) {
+                    return " Titulo: " + titulo + caracteristica.getTextContent();
+                    } else {
+                    return " Vol: " + titulo + caracteristica.getTextContent();
                     }
+                    
                     }
+                  }
                    
                 }
-                }
+              }
             }
             return "No se encontro el Libro";
            
@@ -111,10 +119,17 @@ public class Buscador {
             }
              String libros = "";  
             for(int i = 0; i < listaLibroAutor.size(); i++){
-                libros = libros + " Libro: " + listaLibroAutor.get(i);
+                libros = libros + " - " + listaLibroAutor.get(i);
             }
              
-            return autor + libros;
+             
+            if("A".equals(biblioteca)) {
+                    return " Libro: " + autor + libros;
+                    } else if ("B".equals(biblioteca)) {
+                    return " Titulo: " + autor + libros;
+                    } else {
+                    return " Vol: " + autor + libros;
+                    }
     }
     
 }

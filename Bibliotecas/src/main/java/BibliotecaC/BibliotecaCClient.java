@@ -29,7 +29,7 @@ public class BibliotecaCClient {
         String a = "A";
         String b = "B";
         boolean salida = true;
-        IconoC = new ImageIcon("src\\main\\java\\Imagenes\\iconfinder_bookshelf_3512850.png");
+        IconoC = new ImageIcon("C:\\Users\\Public\\Imagenes\\iconfinder_bookshelf_3512850.png");
         
         //CREACION DEL ARCHIVO DE LOGS
         FileWriter logs = new FileWriter("C:\\Users\\Public\\Logs Bibliotecas\\logsC.txt");

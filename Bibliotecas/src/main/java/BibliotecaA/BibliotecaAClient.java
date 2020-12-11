@@ -26,7 +26,7 @@ public class BibliotecaAClient {
         throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException {
         
         //DECLARACION DE VARIABLES PARA LOS CONDICIONALES
-        IconoA = new ImageIcon("src\\main\\java\\Imagenes\\iconfinder_book_shop-shop-architecture_and_city-buildings-business-books-sale-city_4059950.png");
+        IconoA = new ImageIcon("C:\\Users\\Public\\Imagenes\\iconfinder_book_shop-shop-architecture_and_city-buildings-business-books-sale-city_4059950.png");
         String b = "B";
         String c = "C";
         boolean salida = true;
@@ -176,7 +176,7 @@ public class BibliotecaAClient {
             }
           
            //PREGUNTA SI DESEA SALIR DEL SISTEMA
-           int resp = JOptionPane.showConfirmDialog(null, "¿Desea Salir?", "BibliotecaC", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, IconoA); //Pregunta si desea salir de la app
+           int resp = JOptionPane.showConfirmDialog(null, "¿Desea Salir?", "Biblioteca A", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, IconoA); //Pregunta si desea salir de la app
            if(resp == 1) {
            salida=true;
            } else { salida=false; } 
