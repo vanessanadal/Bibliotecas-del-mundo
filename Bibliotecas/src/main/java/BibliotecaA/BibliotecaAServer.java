@@ -17,8 +17,8 @@ public class BibliotecaAServer {
     public static void main(String[] args){
 
         try {
-            Registry registry = LocateRegistry.createRegistry(5099);
-            registry.rebind("BibliotecaA", new BibliotecaAImpl());    //ruta donde sube objeto        
+            Registry registry = LocateRegistry.createRegistry(5099); //Puerto por donde escuchara el servidor A
+            registry.rebind("BibliotecaA", new BibliotecaAImpl());    //ruta donde sube objeto remoto e instancia del mismo      
 
         } catch (Exception e) {
 

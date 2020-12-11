@@ -22,7 +22,7 @@ public class BibliotecaAImpl extends UnicastRemoteObject implements BibliotecaA{
     }
 
      @Override
-    public String helloToA(String name) throws RemoteException{
+    public String helloToA(String name) throws RemoteException{  //Metodo de prueba
 
         System.err.println(name + " is trying to contact!");
         return "Server A says hello to " + name;

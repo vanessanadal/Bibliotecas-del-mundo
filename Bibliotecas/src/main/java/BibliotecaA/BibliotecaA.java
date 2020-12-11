@@ -17,7 +17,9 @@ import org.xml.sax.SAXException;
  */
 public interface BibliotecaA extends Remote{
     
-     public String helloToA(String name) throws RemoteException;
+     //Metodos a implementar por el servidor de la Biblioteca A
+    
+     public String helloToA(String name) throws RemoteException; //Metodo de prueba
      
      public String PedirLibro(String name) throws RemoteException, ParserConfigurationException, SAXException, IOException;
      

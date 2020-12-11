@@ -41,6 +41,7 @@ public class MiddlewareServidorA {
         }
         //FIN ESCRITURA
         
+        //LLAMADA A METODO DESDE OBJETO REMOTO
         return look_upA.PedirAutor(nombre);
     }
     
@@ -64,6 +65,7 @@ public class MiddlewareServidorA {
         }
         //FIN ESCRITURA
         
+        //LLAMADA A METODO DESDE OBJETO REMOTO
         return look_upA.PedirLibro(nombre);
     }
     

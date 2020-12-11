@@ -16,7 +16,9 @@ import org.xml.sax.SAXException;
  */
 public interface BibliotecaC extends Remote{
     
-     public String helloToC(String name) throws RemoteException;
+     //Metodos a implementar por el servidor de la Biblioteca C
+    
+     public String helloToC(String name) throws RemoteException; //Metodo de prueba
     
      public String EncontrarVol(String name) throws RemoteException, ParserConfigurationException, SAXException, IOException;
      

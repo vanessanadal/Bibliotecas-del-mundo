@@ -60,11 +60,11 @@ public class Buscador {
                     //JOptionPane.showMessageDialog(null, "Se encontro el libro " + titulo + " Autor: " + caracteristica.getTextContent());
                     
                     if("A".equals(biblioteca)) {
-                    return " Libro: " + titulo + caracteristica.getTextContent();
+                    return " Libro: " + titulo + " " +caracteristica.getTextContent();
                     } else if ("B".equals(biblioteca)) {
-                    return " Titulo: " + titulo + caracteristica.getTextContent();
+                    return " Titulo: " + titulo + " " +caracteristica.getTextContent();
                     } else {
-                    return " Vol: " + titulo + caracteristica.getTextContent();
+                    return " Vol: " + titulo + " " + caracteristica.getTextContent();
                     }
                     
                     }
@@ -124,11 +124,11 @@ public class Buscador {
              
              
             if("A".equals(biblioteca)) {
-                    return " Libro: " + autor + libros;
+                    return " Libro: " + autor + " " +libros;
                     } else if ("B".equals(biblioteca)) {
-                    return " Titulo: " + autor + libros;
+                    return " Titulo: " + autor + " " +libros;
                     } else {
-                    return " Vol: " + autor + libros;
+                    return " Vol: " + autor + " " + libros;
                     }
     }
     

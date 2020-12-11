@@ -18,8 +18,8 @@ public class BibliotecaCServer {
     public static void main(String[] args){
 
         try {
-            Registry registry = LocateRegistry.createRegistry(5097);
-            registry.rebind("BibliotecaC", new BibliotecaCImpl());    //ruta donde sube objeto        
+            Registry registry = LocateRegistry.createRegistry(5097); //Puerto por donde escuchara el servidor C
+            registry.rebind("BibliotecaC", new BibliotecaCImpl());    //ruta donde sube objeto remoto e instancia del mismo        
 
         } catch (Exception e) {
 
