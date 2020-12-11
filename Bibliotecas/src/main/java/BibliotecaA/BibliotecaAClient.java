@@ -14,16 +14,19 @@ import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 import java.text.SimpleDateFormat;
-
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class BibliotecaAClient {
 
     private static BibliotecaA look_upA;
-
+    static Icon IconoA;
+    
     public static void main(String[] args) 
         throws MalformedURLException, RemoteException, NotBoundException, ParserConfigurationException, SAXException, IOException {
         
         //DECLARACION DE VARIABLES PARA LOS CONDICIONALES
+        IconoA = new ImageIcon("src\\main\\java\\Imagenes\\iconfinder_book_shop-shop-architecture_and_city-buildings-business-books-sale-city_4059950.png");
         String b = "B";
         String c = "C";
         boolean salida = true;
@@ -34,17 +37,19 @@ public class BibliotecaAClient {
         
         while(salida) {
             
-        String bi = JOptionPane.showInputDialog("En cual biblioteca desea buscar?");
+        String[] biblio = {" ", "B", "C"};
+        String bi = (String) JOptionPane.showInputDialog(null, "En cual biblioteca desea buscar?", "Biblioteca A", JOptionPane.DEFAULT_OPTION, IconoA, biblio, biblio[0]);
         
         //PETICIONES A BIBLIOTECA B
         if(b.equals(bi)){  //Entra por aqui si se quiere pedir libro a biblioteca B
-        String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+        String[] autotitu = {"autor", "titulo"};
+        String opcion = (String) JOptionPane.showInputDialog(null, "Desea buscar libro por autor o titulo?", "Biblioteca A", JOptionPane.DEFAULT_OPTION, IconoA, autotitu, autotitu[0]);
         
         MiddlewareClientA mA = new MiddlewareClientA(); //Se instacia objeto de clase Middleware para traducir peticiones a 
 
             //SI CLIENTE PIDE POR TITULO A BIBLIOTECA B
             if("titulo".equals(opcion)) {
-                     String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                     String titulo = (String) JOptionPane.showInputDialog(null,"Coloque el titulo que desea buscar","Biblioteca A",JOptionPane.INFORMATION_MESSAGE, IconoA,null,"");
 
                      //Imprimiendo traza y escribiendo logs en txt
                      String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -53,7 +58,7 @@ public class BibliotecaAClient {
 
                      //Cliente A llama a medoto PedirLibro de su Middleware para que este lo traduzca a Z39
                      String libro = mA.PedirLibro(titulo, "B", logs);
-                     JOptionPane.showMessageDialog(null, libro); 
+                     JOptionPane.showMessageDialog(null, libro,"Biblioteca A",JOptionPane.INFORMATION_MESSAGE,IconoA);
 
                       //Imprimiendo traza y escribiendo logs en txt
                      String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -62,7 +67,7 @@ public class BibliotecaAClient {
 
               //SI CLIENTE PIDE POR AUTOR A BIBLIOTECA B       
             } else { 
-                     String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                     String autor = (String) JOptionPane.showInputDialog(null,"Coloque el autor que desea buscar","Biblioteca A",JOptionPane.INFORMATION_MESSAGE, IconoA,null,"");
 
                      //Imprimiendo traza y escribiendo logs en txt
                      String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -71,7 +76,7 @@ public class BibliotecaAClient {
 
                      //Cliente A llama a medoto PedirAutor de su Middleware para que este lo traduzca a Z39
                      String libro = mA.PedirAutor(autor, "B", logs);
-                     JOptionPane.showMessageDialog(null, libro); 
+                     JOptionPane.showMessageDialog(null, libro,"Biblioteca A",JOptionPane.INFORMATION_MESSAGE,IconoA); 
 
                      //Imprimiendo traza y escribiendo logs en txt
                      String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -83,13 +88,14 @@ public class BibliotecaAClient {
         } else 
             //PETICIONES A BIBLIOTECA C
             if (c.equals(bi)) {
-                String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+                String[] autotitu = {"autor", "titulo"};
+                String opcion = (String) JOptionPane.showInputDialog(null, "Desea buscar libro por autor o titulo?", "Biblioteca A", JOptionPane.DEFAULT_OPTION, IconoA, autotitu, autotitu[0]);
 
                 MiddlewareClientA mA = new MiddlewareClientA();
                 
                 //SI CLIENTE PIDE POR TITULO A BIBLIOTECA C
                 if("titulo".equals(opcion)) {
-                         String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                         String titulo = (String) JOptionPane.showInputDialog(null,"Coloque el titulo que desea buscar","Biblioteca A",JOptionPane.INFORMATION_MESSAGE, IconoA,null,"");
                          
                          //Imprimiendo traza y escribiendo logs en txt
                             String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -97,7 +103,7 @@ public class BibliotecaAClient {
                             logs.write(marca + " -- Peticion de Cliente A hacia Servidor C: Pedir Libro " + titulo+ " | ");
                          
                          String libro = mA.PedirLibro(titulo, "C", logs);
-                         JOptionPane.showMessageDialog(null, libro);
+                         JOptionPane.showMessageDialog(null, libro,"Biblioteca A",JOptionPane.INFORMATION_MESSAGE,IconoA);
                          
                          //Imprimiendo traza y escribiendo logs en txt
                             String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -106,7 +112,7 @@ public class BibliotecaAClient {
                  
                   //SI CLIENTE PIDE POR AUTOR A BIBLIOTECA C
                 } else { 
-                         String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                          String autor = (String) JOptionPane.showInputDialog(null,"Coloque el autor que desea buscar","Biblioteca A",JOptionPane.INFORMATION_MESSAGE, IconoA,null,"");
                          
                          //Imprimiendo traza y escribiendo logs en txt
                         String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -115,7 +121,7 @@ public class BibliotecaAClient {
                          
                          //Cliente A llama a medoto PedirAutor de su Middleware para que este lo traduzca a Z39
                          String libro = mA.PedirAutor(autor, "C", logs);
-                         JOptionPane.showMessageDialog(null, libro); 
+                         JOptionPane.showMessageDialog(null, libro,"Biblioteca A",JOptionPane.INFORMATION_MESSAGE,IconoA); 
                 
                         //Imprimiendo traza y escribiendo logs en txt
                          String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -128,11 +134,12 @@ public class BibliotecaAClient {
             //PETICIONES LOCALES A BIBLIOTECA A
             look_upA = (BibliotecaA) Naming.lookup("rmi://localhost:5099/BibliotecaA"); //ruta donde busca objeto
             
-            String opcion = JOptionPane.showInputDialog("Desea buscar libro por autor o titulo?");
+             String[] autotitu = {"autor", "titulo"};
+             String opcion = (String) JOptionPane.showInputDialog(null, "Desea buscar libro por autor o titulo?", "Biblioteca A", JOptionPane.DEFAULT_OPTION, IconoA, autotitu, autotitu[0]);
                 
             //SI CLIENTE PIDE POR TITULO LOCALMENTE
                 if("titulo".equals(opcion)) {
-                 String titulo = JOptionPane.showInputDialog("Coloque el titulo que desea buscar");
+                 String titulo = (String) JOptionPane.showInputDialog(null,"Coloque el titulo que desea buscar","Biblioteca A",JOptionPane.INFORMATION_MESSAGE, IconoA,null,"");
                  
                  //Imprimiendo traza y escribiendo logs en txt
                  String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -141,7 +148,7 @@ public class BibliotecaAClient {
                  
                  //LLAMA LOCALMENTE AL SERVIDOR DE LA BIBLIOTECA A
                  String libro = look_upA.PedirLibro(titulo); 
-                 JOptionPane.showMessageDialog(null, libro);
+                 JOptionPane.showMessageDialog(null, libro,"Biblioteca A",JOptionPane.INFORMATION_MESSAGE,IconoA);
                  
                  //Imprimiendo traza y escribiendo logs en txt
                  String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -150,7 +157,7 @@ public class BibliotecaAClient {
                  
             //SI CLIENTE PIDE POR AUTOR LOCALMENTE
                 } else { 
-                 String autor = JOptionPane.showInputDialog("Coloque el autor que desea buscar");
+                 String autor = (String) JOptionPane.showInputDialog(null,"Coloque el autor que desea buscar","Biblioteca A",JOptionPane.INFORMATION_MESSAGE, IconoA,null,"");
                  
                  //Imprimiendo traza y escribiendo logs en txt
                  String marca = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -159,7 +166,7 @@ public class BibliotecaAClient {
                  
                   //LLAMA LOCALMENTE AL SERVIDOR DE LA BIBLIOTECA A
                  String libro = look_upA.PedirAutor(autor); 
-                 JOptionPane.showMessageDialog(null, libro); 
+                  JOptionPane.showMessageDialog(null, libro,"Biblioteca A",JOptionPane.INFORMATION_MESSAGE,IconoA);
                 
                  //Imprimiendo traza y escribiendo logs en txt
                  String marcaFin = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -169,8 +176,8 @@ public class BibliotecaAClient {
             }
           
            //PREGUNTA SI DESEA SALIR DEL SISTEMA
-           String res = JOptionPane.showInputDialog("Desea salir? s/n");
-           if("n".equals(res)) {
+           int resp = JOptionPane.showConfirmDialog(null, "¿Desea Salir?", "BibliotecaC", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, IconoA); //Pregunta si desea salir de la app
+           if(resp == 1) {
            salida=true;
            } else { salida=false; } 
         

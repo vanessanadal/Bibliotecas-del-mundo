@@ -57,7 +57,7 @@ public class Buscador {
                     for (int s=0; s<listaCaracteristicas.getLength(); s++){
                     caracteristica = listaCaracteristicas.item(s);
                     if(caracteristica.getNodeName().equals("AUTOR")){
-                    JOptionPane.showMessageDialog(null, "Se encontro el libro " + titulo + " Autor: " + caracteristica.getTextContent());
+                    //JOptionPane.showMessageDialog(null, "Se encontro el libro " + titulo + " Autor: " + caracteristica.getTextContent());
                     return "Libro: " + titulo + caracteristica.getTextContent();
                     }
                     }
